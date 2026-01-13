@@ -41,4 +41,4 @@ async def async_view(request):
 # =========================================================
 def sync_view(request):
     http_call_sync()
-    return HttpResponse("Blocking HTTP request (SYNC)")
+    return HttpResponse("Non-blocking HTTP request (ASYNC) - contador ativo")
