@@ -8,12 +8,14 @@ from django.http import HttpResponse
 # FUNÇÃO ASSÍNCRONA (NON-BLOCKING)
 # =========================================================
 async def http_call_async():
-    for num in range(1, 6):
+    for num in range(5, 0, -1):
         await asyncio.sleep(1)
-        print(f"Async contador: {num}")
+        print(f"Async contador regressivo: {num}")
+
     async with httpx.AsyncClient() as client:
         response = await client.get("https://httpbin.org")
         print("Async status code:", response.status_code)
+
 
 
 # =========================================================
@@ -41,4 +43,4 @@ async def async_view(request):
 # =========================================================
 def sync_view(request):
     http_call_sync()
-    return HttpResponse("Non-blocking HTTP request (ASYNC) - contador ativo")
+    return HttpResponse("Blocking HTTP request (SYNC)")
